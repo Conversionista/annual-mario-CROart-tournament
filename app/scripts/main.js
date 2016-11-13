@@ -22,6 +22,12 @@ $('#reg button.delete').on('click', function(event) {
 var clientId = '103212263499-8acgob9gddeccbictgmdv94lapio18d2.apps.googleusercontent.com',
 	scopes = ['https://www.googleapis.com/auth/plus.me', 'https://www.googleapis.com/auth/plus.profile.emails.read'];
 
+var field = {
+    fullName: $('input[name="entry.1643645516"]'),
+    email: $('input[name="entry.179769443"]'),
+    phone: $('input[name="entry.1603266961"]')
+};
+
 /**
   * Response callback for when the API client receives a response.
   *
@@ -39,16 +45,16 @@ function handleEmailResponse(resp) {
                 }
             }
 
-            $('input[name="entry.1643645516"]').val(primaryEmail);
+            field.email.val(primaryEmail);
 
         }
 
         if(resp.displayName) {
-        	$('input[name="entry.179769443"]').val(resp.displayName);
+        	field.fullName.val(resp.displayName);
         }
 
         $('#reg').addClass('is-active');
-        $('input[name="entry.1603266961"]').focus();
+        field.phone.focus();
 
     }
 }
@@ -91,10 +97,36 @@ function authorize(event) {
     });
 }
 
+$('#ss-submit').on('click', function(event) {
+    event.preventDefault();
+    /* Act on the event */
+    
+    
 
-// // replace "ss-submit" with the ID of your submit button
-// document.getElementById("ss-submit").addEventListener("click", function(){
-//   alert("It works!")
-//   // replace "ss-form" with the ID of your form
-//   document.getElementById("reg").reset();
-// });
+    $.each(field, function(index, val) {
+        $(this).parent().find('span.help').remove();
+         if(val.val() === '') {
+            console.log('empty');
+            $(this).removeClass('is-success').addClass('is-danger');
+            $(this).parent().append('<span class="help is-danger">Sorry, this field can\'t be empty</span>');
+
+         } else if (val.val() !== '') {
+            $(this).removeClass('is-danger').addClass('is-success');
+         }
+    });
+
+
+    if(field.fullName.val() !== '' && field.email.val() !== '' && field.phone.val() !== ''){
+        $(this).addClass('is-loading');
+        setTimeout(function() {
+            // replace the url in quotes below to where you want to the user to be redirected to
+            window.location = '/registered.html';
+        }, 1000);
+    }
+
+
+
+
+
+
+});
