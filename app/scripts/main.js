@@ -1,26 +1,29 @@
 $(document).ready(function($) {
-	WebFont.load({
-		google: {
-			families: ['Press Start 2P']
-		}
-	});	
+    'use strict';
+    WebFont.load({
+        google: {
+            families: ['Press Start 2P']
+        }
+    });
 });
 
 $('#btn').on('click', function(event) {
-	event.preventDefault();
-	/* Act on the event */
-	authorize(event);
-	// $('#reg').addClass('is-active');
+    'use strict';
+    event.preventDefault();
+    /* Act on the event */
+    authorize(event);
+    // $('#reg').addClass('is-active');
 });
 
 $('#reg button.delete').on('click', function(event) {
-	event.preventDefault();
-	/* Act on the event */
-	$('#reg').removeClass('is-active');
+    'use strict';
+    event.preventDefault();
+    /* Act on the event */
+    $('#reg').removeClass('is-active');
 });
 
 var clientId = '103212263499-8acgob9gddeccbictgmdv94lapio18d2.apps.googleusercontent.com',
-	scopes = ['https://www.googleapis.com/auth/plus.me', 'https://www.googleapis.com/auth/plus.profile.emails.read'];
+    scopes = ['https://www.googleapis.com/auth/plus.me', 'https://www.googleapis.com/auth/plus.profile.emails.read'];
 
 var field = {
     fullName: $('input[name="entry.1643645516"]'),
@@ -29,10 +32,10 @@ var field = {
 };
 
 /**
-  * Response callback for when the API client receives a response.
-  *
-  * @param resp The API response object with the user email and profile information.
-  */
+ * Response callback for when the API client receives a response.
+ *
+ * @param resp The API response object with the user email and profile information.
+ */
 function handleEmailResponse(resp) {
     'use strict';
     console.log(resp);
@@ -49,8 +52,8 @@ function handleEmailResponse(resp) {
 
         }
 
-        if(resp.displayName) {
-        	field.fullName.val(resp.displayName);
+        if (resp.displayName) {
+            field.fullName.val(resp.displayName);
         }
 
         $('#reg').addClass('is-active');
@@ -61,14 +64,12 @@ function handleEmailResponse(resp) {
 
 
 /**
-  * Sets up an API call after the Google API client loads.
-  */
+ * Sets up an API call after the Google API client loads.
+ */
 function apiClientLoaded() {
     'use strict';
     gapi.client.plus.people.get({ userId: 'me' }).execute(handleEmailResponse);
 }
-
-
 
 function authorize(event) {
     'use strict';
@@ -88,9 +89,9 @@ function authorize(event) {
     gapi.auth.authorize(authData, function(response) {
 
         if (response.error) {
-        	console.info(response.error);
+            console.info(response.error);
         } else {
-        	console.log(response);
+            console.log(response);
             gapi.client.load('plus', 'v1', apiClientLoaded);
 
         }
@@ -98,35 +99,28 @@ function authorize(event) {
 }
 
 $('#ss-submit').on('click', function(event) {
+    'use strict';
     event.preventDefault();
     /* Act on the event */
-    
-    
 
     $.each(field, function(index, val) {
         $(this).parent().find('span.help').remove();
-         if(val.val() === '') {
+        if (val.val() === '') {
             console.log('empty');
             $(this).removeClass('is-success').addClass('is-danger');
             $(this).parent().append('<span class="help is-danger">Sorry, this field can\'t be empty</span>');
 
-         } else if (val.val() !== '') {
+        } else if (val.val() !== '') {
             $(this).removeClass('is-danger').addClass('is-success');
-         }
+        }
     });
 
-
-    if(field.fullName.val() !== '' && field.email.val() !== '' && field.phone.val() !== ''){
+    if (field.fullName.val() !== '' && field.email.val() !== '' && field.phone.val() !== '') {
         $(this).addClass('is-loading');
         setTimeout(function() {
             // replace the url in quotes below to where you want to the user to be redirected to
-            window.location = '/registered.html';
+            window.location = '/annual-mario-CROart-tournament/registered.html';
         }, 1000);
     }
-
-
-
-
-
 
 });
