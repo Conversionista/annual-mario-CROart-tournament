@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="description" content=""><meta name="viewport" content="width=device-width,initial-scale=1"><title>Registered - Mario CROart Tournament 2016</title><link rel="canonical" href="https://apps.conversionista.se/annual-mario-CROart-tournament"><link rel="stylesheet" href="styles/vendor.css"><link rel="stylesheet" href="styles/main.css"></head><body><!--[if lt IE 10]>
+    <div class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="box"><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to access this site.</p></div>
+  </div>
+</div>      
+    <![endif]--><div class="hero is-bold is-fullheight is-gold"><section class="hero is-bold is-fullheight is-mario"><div class="hero-head"><div class="container"><div class="has-text-centered"><p>Conversionista presents:<br>Annual Mario CROart Tournament</p></div></div></div><div class="hero-body"><div class="container has-text-centered"><div class="columns"><div class="column"><i class="icon-xl ion-flash wow fadeIn"></i><h2 class="title is-1">Boom!</h2><p>You are now registered. Please keep an eye out for the tournament schedule in your inbox.</p></div></div><div class="columns"><div class="column"><a href="https://twitter.com/intent/tweet?text=I%20just%20registered%20for%20Conversionista%27s%20Annual%20Mario%20CROart%20Tournament–register%20you%20too%20%26%20win%20amazing%20prizes%20%23CROart%20https%3A%2F%2Fdah.la%2F2eV67nQ" class="share button is-medium is-gold is-inverted" target="_blank">tell a friend</a></div></div></div></div><div class="hero-foot"><div class="container"><div class="has-text-centered"><p>Hosted by and at <a href="#">Conversionista!</a>, <a href="#">Lutmakargatan 34, Stockholm, Sweden</a>.</p></div></div></div></section></div><script src="scripts/webfontloader.js"></script><script>WebFont.load({
+        google: {
+            families: ['Press Start 2P']
+        }
+    });
+    if (navigator.share !== undefined) {
+        const SHARE_BTN = document.querySelector('.share');
+
+        SHARE_BTN.textContent = 'Share';
+
+        SHARE_BTN.addEventListener('click', function (ev) {
+
+            navigator.share({
+                title: document.title,
+                url: document.querySelector('link[rel=canonical]') ? document.querySelector('link[rel=canonical]').href : window.location.href
+            }).then(() => console.log('Successful share'))
+            .catch((error) => console.log('Error sharing:', error));
+
+            ev.preventDefault();
+        });
+        }</script></body></html>
