@@ -26,8 +26,8 @@ var clientId = '103212263499-8acgob9gddeccbictgmdv94lapio18d2.apps.googleusercon
     scopes = ['https://www.googleapis.com/auth/plus.me', 'https://www.googleapis.com/auth/plus.profile.emails.read'];
 
 var field = {
-    fullName: $('input[name="entry.1643645516"]'),
-    email: $('input[name="entry.179769443"]'),
+    fullName: $('input[name="entry.179769443"]'),
+    email: $('input[name="entry.1643645516"]'),
     phone: $('input[name="entry.1603266961"]')
 };
 
@@ -123,4 +123,17 @@ $('#ss-submit').on('click', function(event) {
         }, 1000);
     }
 
+});;
+
+$('input').keypress(function(event) {
+    'use strict';
+    if (event.which == 13) {
+        event.preventDefault();
+        $('#ss-submit').click();
+    }
 });
+
+(function() {
+    // Initialize
+    var bLazy = new Blazy();
+})();

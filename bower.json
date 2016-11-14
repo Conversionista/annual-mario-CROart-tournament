@@ -4,7 +4,8 @@
   "dependencies": {
     "jquery": "~2.1.1",
     "webfontloader": "^1.6.26",
-    "Ionicons": "ionicons#^2.0.1"
+    "Ionicons": "ionicons#^2.0.1",
+    "bLazy": "blazy#^1.8.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",
