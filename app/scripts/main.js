@@ -100,7 +100,7 @@ function authorize(event) {
 
 $('#ss-submit').on('click', function(event) {
     'use strict';
-    event.preventDefault();
+    //event.preventDefault();
     /* Act on the event */
 
     $.each(field, function(index, val) {
@@ -116,11 +116,20 @@ $('#ss-submit').on('click', function(event) {
     });
 
     if (field.fullName.val() !== '' && field.email.val() !== '' && field.phone.val() !== '') {
-        $(this).addClass('is-loading');
-        setTimeout(function() {
-            // replace the url in quotes below to where you want to the user to be redirected to
-            window.location = '/annual-mario-CROart-tournament/registered.html';
-        }, 1000);
+        var btn = $(this);
+
+        btn.removeClass('is-primary').addClass('is-disabled is-loading is-info');
+
+        $('#secret-frame').on('load', function () {
+            console.info('Form posted to Google Forms...');
+            btn.removeClass('is-info').addClass('animated infinite pulse is-success');
+
+            setTimeout(function() {
+                // replace the url in quotes below to where you want to the user to be redirected to
+                window.location = '/annual-mario-CROart-tournament/registered.html';
+            }, 1000);
+        })
+        
     }
 
 });;
